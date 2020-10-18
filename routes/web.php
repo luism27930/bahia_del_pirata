@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 
 Route::resource('link', 'LinkController');
-
+Route::get('sendLink', 'LinkController@sendLink');
 
 Auth::routes();
 

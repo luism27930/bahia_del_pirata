@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Link;
 use Illuminate\Http\Request;
+use App\Jobs\LinkJob;
+
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Message\AMQPMessage;
 
 class LinkController extends Controller
 {
@@ -11,6 +15,15 @@ class LinkController extends Controller
     {
         $this->middleware('auth');
 
+    }
+
+    public function sendLink()
+    {
+
+        $data = ['link'=>'https://youtu.be/F5GQDUBmp4c?t=2650', 'user_id'=>'1'];
+
+        LinkJob::dispatch($data);
+        dd("enviado");
     }
 
     /**
