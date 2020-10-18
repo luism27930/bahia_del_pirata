@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use App\Link;
 use Illuminate\Http\Request;
 use App\Jobs\LinkJob;
@@ -20,9 +20,16 @@ class LinkController extends Controller
     public function sendLink()
     {
 
-        $data = ['link'=>'https://youtu.be/F5GQDUBmp4c?t=2650', 'user_id'=>'1'];
+        $data = ['link'=>'https://youtu.be/F5GQDUBmp4c?t=2650', 'user_id'=>Auth::user()->id, 'user_name'=>Auth::user()->name  ];
 
-        LinkJob::dispatch($data);
+        $connection = new AMQPStreamConnection('shrimp-01.rmq.cloudamqp.com', 5672, 'gafnmalf', 'dfidH6NSrF-w5gZkZ25zXNsVsViFLI7P');
+        $channel = $connection->channel();
+        $channel->queue_declare('default', true, false, false, false);
+        $message = $data;
+        $msg = new AMQPMessage(json_encode($message));
+        $channel->basic_publish($msg, '', 'default');
+        $channel->close();
+        $connection->close();
         dd("enviado");
     }
 
@@ -71,6 +78,15 @@ class LinkController extends Controller
         $link->format = request('format');
         $link->proccesed = false;
         $link->save();
+
+        $connection = new AMQPStreamConnection('shrimp-01.rmq.cloudamqp.com', 5672, 'gafnmalf', 'dfidH6NSrF-w5gZkZ25zXNsVsViFLI7P');
+        $channel = $connection->channel();
+        $channel->queue_declare('default', true, false, false, false);
+        $msg = new AMQPMessage($link);
+        $channel->basic_publish($msg, '', 'default');
+        $channel->close();
+        $connection->close();
+
         return redirect()->action('LinkController@index');
     }
 
