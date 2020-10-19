@@ -18,7 +18,7 @@ class AMQPSSLConnection extends AMQPStreamConnection
         $port,
         $user,
         $password,
-        $vhost = '/',
+        $vhost = 'gafnmalf',
         $ssl_options = array(),
         $options = array(),
         $ssl_protocol = 'ssl'

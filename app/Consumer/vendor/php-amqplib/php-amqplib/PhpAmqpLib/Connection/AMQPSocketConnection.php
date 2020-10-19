@@ -27,7 +27,7 @@ class AMQPSocketConnection extends AbstractConnection
         $port,
         $user,
         $password,
-        $vhost = '/',
+        $vhost = 'gafnmalf',
         $insist = false,
         $login_method = 'AMQPLAIN',
         $login_response = null,
