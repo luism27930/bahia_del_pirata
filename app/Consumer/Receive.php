@@ -10,6 +10,7 @@ use PhpAmqpLib\Connection\AMQPStreamConnection;
  echo " [*] Waiting for messages. To exit press CTRL+C\n";
  
  $callback = function ($msg) {
+     $video=json_decode($msg->body);
      echo ' [x] Received ', $msg->body, "\n";
  };
  

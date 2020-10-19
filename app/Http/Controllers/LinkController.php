@@ -77,7 +77,6 @@ class LinkController extends Controller
         $channel->basic_publish($msg, '', 'default');
         $channel->close();
         $connection->close();
-
         return redirect()->action('LinkController@index');
     }
 
