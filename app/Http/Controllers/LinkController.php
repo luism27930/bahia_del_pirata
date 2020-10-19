@@ -20,17 +20,7 @@ class LinkController extends Controller
     public function sendLink()
     {
 
-        $data = ['link'=>'https://youtu.be/F5GQDUBmp4c?t=2650', 'user_id'=>Auth::user()->id, 'user_name'=>Auth::user()->name  ];
-
-        $connection = new AMQPStreamConnection('shrimp-01.rmq.cloudamqp.com', 5672, 'gafnmalf', 'dfidH6NSrF-w5gZkZ25zXNsVsViFLI7P');
-        $channel = $connection->channel();
-        $channel->queue_declare('default', true, false, false, false);
-        $message = $data;
-        $msg = new AMQPMessage(json_encode($message));
-        $channel->basic_publish($msg, '', 'default');
-        $channel->close();
-        $connection->close();
-        dd("enviado");
+       
     }
 
     /**
@@ -80,6 +70,7 @@ class LinkController extends Controller
         $link->save();
 
         $connection = new AMQPStreamConnection('shrimp-01.rmq.cloudamqp.com', 5672, 'gafnmalf', 'dfidH6NSrF-w5gZkZ25zXNsVsViFLI7P');
+       
         $channel = $connection->channel();
         $channel->queue_declare('default', true, false, false, false);
         $msg = new AMQPMessage($link);
