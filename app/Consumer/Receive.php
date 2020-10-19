@@ -11,6 +11,9 @@ use PhpAmqpLib\Connection\AMQPStreamConnection;
  
  $callback = function ($msg) {
      $video=json_decode($msg->body);
+
+    
+
      echo ' [x] Received ', $msg->body, "\n";
  };
  
