@@ -1,22 +1,20 @@
 <?php
-declare(strict_types=1);
-require __DIR__ . '/vendor/autoload.php';
+$url = 'https://www.youtube.com/watch?v=bQL2FsHe7G4';
+$template = 'downloads\%(id)s.%(ext)s';
+$string = ('youtube-dl ' . escapeshellarg($url) . ' -f 18 -o ' .
+    escapeshellarg($template));
 
-use YoutubeDl\Options;
-use YoutubeDl\YoutubeDl;
-
-$yt = new YoutubeDl();
-
-$collection = $yt->download(
-    Options::create('/downloads')
-        ->url('https://www.youtube.com/watch?v=bQL2FsHe7G4')
+$descriptorspec = array(
+    0 => array("pipe", "r"), // stdin
+    1 => array("pipe", "w"), // stdout
+    2 => array("pipe", "w"), // stderr
 );
-
-foreach ($collection->getVideos() as $video) {
-    if ($video->getError() !== null) {
-        echo "Error downloading video: {$video->getError()}.";
-    } else {
-        echo $video->getTitle(); // Will return Phonebloks
-        // $video->getFile(); // \SplFileInfo instance of downloaded file
-    }
-}
+$process = proc_open($string, $descriptorspec, $pipes);
+$stdout = stream_get_contents($pipes[1]);
+fclose($pipes[1]);
+$stderr = stream_get_contents($pipes[2]);
+fclose($pipes[2]);
+$ret = proc_close($process);
+echo json_encode(array('status' => $ret, 'errors' => $stderr,
+    'url_orginal' => $url, 'output' => $stdout,
+    'command' => $string));
