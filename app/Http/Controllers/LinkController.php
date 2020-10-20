@@ -32,7 +32,7 @@ class LinkController extends Controller
      */
     public function index()
     {
-        $links = Link::where('user_id',auth()->user()->id)->get();
+        $links = Link::where('user_id',auth()->user()->id)->where('proccesed', false)->get();
         
         return view('videos.index', compact('links'));
     }
@@ -71,14 +71,19 @@ class LinkController extends Controller
         $link->proccesed = false;
         $link->save();
 
-        $connection = new AMQPStreamConnection('shrimp-01.rmq.cloudamqp.com', 5672, 'gafnmalf', 'dfidH6NSrF-w5gZkZ25zXNsVsViFLI7P');
-       
-        $channel = $connection->channel();
-        $channel->queue_declare('default', true, false, false, false);
-        $msg = new AMQPMessage($link);
-        $channel->basic_publish($msg, '', 'default');
-        $channel->close();
-        $connection->close();
+            try {
+                $connection = new AMQPStreamConnection('shrimp-01.rmq.cloudamqp.com', 5672, 'gafnmalf', 'dfidH6NSrF-w5gZkZ25zXNsVsViFLI7P');
+                $channel = $connection->channel();
+                $channel->queue_declare('default', true, false, false, false);
+                $msg = new AMQPMessage($link);
+                $channel->basic_publish($msg, '', 'default');
+                $channel->close();
+                $connection->close();
+            } catch (\Throwable $th) {
+                
+            }
+
+
 
         $directory = 'videos/';
         if (!Storage::exists($directory))

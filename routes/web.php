@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,8 +19,7 @@ Route::get('/', function () {
 
 
 Route::resource('link', 'LinkController');
-Route::get('sendLink', 'LinkController@sendLink');
-
+Route::resource('download', 'DownloadController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
