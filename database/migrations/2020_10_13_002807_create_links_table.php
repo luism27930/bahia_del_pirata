@@ -21,9 +21,7 @@ class CreateLinksTable extends Migration
             $table->string('format');
             $table->boolean('proccesed');
             $table->string('link');
-            $table->string('md5sum')->nullable();
             $table->string('symbolic_link')->nullable();
-            $table->string('path_of_downloads')->nullable();
             $table->timestamps();
         });
     }
