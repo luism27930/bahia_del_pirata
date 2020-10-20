@@ -2,12 +2,17 @@
 require_once './Connection.php';
 class Controller{
 
+    /*
+    Debe ser llamado luego de convertir el video
+    Busca en la base de datos que almacena la información de los videos
+    Con el fin de encontrar un video igual y ahorrar espacio
+    */
     public function findSum($video, $md5SUM)
     {
         $conn = new Connection;
         $connection = $conn->conn();
 
-        $query = "SELECT id, path_of_downloads FROM links WHERE md5sum =".$md5SUM;
+        $query = 'SELECT id, path_of_downloads FROM videos WHERE md5sum ='.$md5SUM.' LIMIT 1' ;
 
         $result = mysqli_query($connection,$query);
         if(!$result) 
