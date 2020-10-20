@@ -27,7 +27,8 @@ class VideoConverter {
         $data = json_encode(array('status' => $ret, 'errors' => $stderr,
             'url_orginal' => $newPath, 'output' => $stdout,
             'command' => $command));
-        // echo $data;
+        
+        return $newPath;
 
     }
 
