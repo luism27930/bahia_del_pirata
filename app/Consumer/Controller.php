@@ -20,18 +20,21 @@ class Controller{
 
     }
 
-    public function updateLink($video, $md5SUM, $path, $symbolic_link)
+    public function updateLink($video, $symbolic_link)
     {
         $conn = new Connection;
         $connection = $conn->conn();
-
-        $query = 'UPDATE links SET md5sum = '. $md5SUM.', path_of_downloads = '. $path .', symbolic_link = '. $symbolic_link .', proccesed = true  WHERE id = '.$video->id;
-
+        $query = 'UPDATE links SET symbolic_link = '. $symbolic_link .', proccesed = true  WHERE id = '.$video->id;
         $result = mysqli_query($connection,$query);
-        if(!$result) 
-        {
-            echo "No se ha podido realizar la query";
-        }
+        mysqli_close($connection);
+
+    }
+    public function saveVideo($md5SUM, $path)
+    {
+        $conn = new Connection;
+        $connection = $conn->conn();
+        $query='INSERT INTO videos(md5sum, path_of_downloads) VALUES ('.$md5SUM.','. $path.');';
+        $result = mysqli_query($connection,$query);
         mysqli_close($connection);
 
     }
