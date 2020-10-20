@@ -21,6 +21,7 @@ class CreateLinksTable extends Migration
             $table->string('format');
             $table->boolean('proccesed');
             $table->string('link');
+            $table->string('symbolic_link')->nullable();
             $table->timestamps();
         });
     }
