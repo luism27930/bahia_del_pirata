@@ -1,8 +1,8 @@
 <?php
-$original_path="downloads/audio.mp4";
-$user_directory=public_path("storage/videos/audio.mp4");
-  $command = ('ln -s '. '../../app/Consumer/'.escapeshellarg($original_path).' '. escapeshellarg($user_directory));
-    
+$original_path="Downloads/3.mp4";
+$user_directory="../../../app/../storage/app/videos/5.mp4";
+$command = ('ln -s '. '../../../app/Consumer/'.escapeshellarg($original_path).' '. escapeshellarg($user_directory));
+#ln -s ../../../app/Consumer/Downloads/2.avi ../../../app/../storage/app/videos/link.avi
   $descriptorspec = array(
       0 => array("pipe", "r"), // stdin
       1 => array("pipe", "w"), // stdout
@@ -16,4 +16,28 @@ $user_directory=public_path("storage/videos/audio.mp4");
   $ret = proc_close($process);
   $data = json_encode(array('status' => $ret, 'errors' => $stderr, 'output' => $stdout,
       'command' => $command));
-  // echo $data;
+  echo $command;
+
+// require('Connection.php');
+
+
+//         $conn = new Connection();
+//         $connection = $conn->conn();
+
+//         $query = "SELECT id, path_of_downloads FROM videos where id = 10";
+
+//         $result = mysqli_query($connection,$query);
+//         mysqli_close($connection);
+
+//         $response= mysqli_fetch_row($result);
+
+        
+
+//         if($response){
+//             echo $response[1];
+//         }else{
+
+//             echo "Nothing happens!!";
+//         }
+    
+

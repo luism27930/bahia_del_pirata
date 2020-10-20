@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
-require_once './VideoDownloader.php';
+require('VideoDownloader.php');
+
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 
     $connection = new AMQPStreamConnection('shrimp-01.rmq.cloudamqp.com', 5672, 'gafnmalf', 'dfidH6NSrF-w5gZkZ25zXNsVsViFLI7P');
@@ -11,9 +12,9 @@ use PhpAmqpLib\Connection\AMQPStreamConnection;
     echo " [*] Waiting for messages";
     
     $callback = function ($msg) {
-        
+        echo "llegó...";
         $video=json_decode($msg->body);
-        $Downloader = new VideoDownloader;
+        $Downloader = new VideoDownloader();
         $Downloader->download($video);
 
     };

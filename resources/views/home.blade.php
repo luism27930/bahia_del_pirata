@@ -21,10 +21,10 @@
 
     <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
       <div class="card h-100 text-center">
-        <a href="{{ route('link.index') }}"><i class="fas fa-book-reader fa-10x"></i></a>
+        <a href="{{ route('download.index') }}"><i class="fas fa-book-reader fa-10x"></i></a>
         <div class="card-body">
           <h4 class="card-title">
-            <a href="{{ route('link.index') }}">Videos listos para descargar</a>
+            <a href="{{ route('download.index') }}">Videos listos para descargar</a>
           </h4>
 
 
