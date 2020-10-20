@@ -1,5 +1,6 @@
 <?php
 require_once './VideoConverter.php';
+require_once './Controller.php';
 use Illuminate\Support\Facades\Storage; #videos in local disk
 // // avi
 // // mov 
@@ -72,10 +73,21 @@ class VideoDownloader{
         #Convertirlo después de validar sumatoria
         if ($video->format != 'mp4') {
             $Download = new VideoConverter;
-            $Download->convert($video->id,$path,$video->format);
-            unlink($path);
+            $path_of_converted_video = $Download->convert($video->id,$path,$video->format);
+            unlink($path);// Eliminamos el video descargado
+            $md5sum = md5_file($path_of_converted_video);
+
+            $controller = new Controller;
+            $response = $controller->findSum($md5sum);
+
+            if($response){
+
+                
+            }
+
         }else{
-            
+
+
         }
 
 

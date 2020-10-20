@@ -9,11 +9,10 @@ use PhpAmqpLib\Connection\AMQPStreamConnection;
     $channel->queue_declare('default', false, true, false, false);
 
     echo " [*] Waiting for messages";
-
+    
     $callback = function ($msg) {
-        echo "Procesando...". time();
-        $video=json_decode($msg->body);
         
+        $video=json_decode($msg->body);
         $Downloader = new VideoDownloader;
         $Downloader->download($video);
 
