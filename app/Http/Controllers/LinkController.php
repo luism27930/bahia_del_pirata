@@ -9,6 +9,8 @@ use App\Jobs\LinkJob;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
+use Illuminate\Support\Facades\Storage; #videos in local disk
+
 class LinkController extends Controller
 {
     public function __construct()
@@ -77,6 +79,13 @@ class LinkController extends Controller
         $channel->basic_publish($msg, '', 'default');
         $channel->close();
         $connection->close();
+
+        $directory = 'videos/';
+        if (!Storage::exists($directory))
+            {
+                Storage::makeDirectory($directory);
+            }
+
         return redirect()->action('LinkController@index');
     }
 
