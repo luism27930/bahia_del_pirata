@@ -32,7 +32,7 @@ class LinkController extends Controller
      */
     public function index()
     {
-        $links = Link::where('user_id',auth()->user()->id)->where('proccesed', false)->get();
+        $links = Link::where('user_id',auth()->user()->id)->whereNull('success')->get();
         
         return view('videos.index', compact('links'));
     }
