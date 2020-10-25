@@ -18,13 +18,14 @@ class VideoDownloader
 
         #Validar si existe el link con el formato
         $response = $controller->findLinkAndFormat($video);
+ 
         if ($response) {
             echo "Hay uno igual \n";
             #actualizamos la ruta nuevamente con la ruta del video exitente
             $path_of_converted_video = $response[1];
             $SymbolicLink->create($user_directory, $path_of_converted_video);
             $this->updateLink($video, $symbolic_link);
-        } else {
+        }else {
 
             $response = $controller->findLink($video);
             if ($response) {
@@ -81,7 +82,7 @@ class VideoDownloader
                     //En caso de error en la descarga
                     $controller = new Controller();
                     $controller->linkError($video->id);
-                    
+
                 }
             }
         }

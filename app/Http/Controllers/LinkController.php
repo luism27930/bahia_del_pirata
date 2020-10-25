@@ -68,7 +68,6 @@ class LinkController extends Controller
         $link->name = request('name');
         $link->link = request('link');
         $link->format = request('format');
-        $link->proccesed = false;
         $link->save();
 
             try {

@@ -17,7 +17,7 @@ class CreateVideosTable extends Migration
             $table->id();
             $table->string('md5sum')->nullable();
             $table->string('path_of_downloads')->nullable();
-            $table->string('path_of_link')->nullable();
+            $table->string('link')->nullable();
             $table->string('format')->nullable();
             $table->timestamps();
         });
