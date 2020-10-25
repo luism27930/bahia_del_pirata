@@ -12,7 +12,6 @@ class Controller{
         $connection = $conn->conn();
 
         $query = "SELECT id, path_of_downloads FROM videos WHERE format ='$video->format' AND link ='$video->link' LIMIT 1";
-         echo $query;
         $result = mysqli_query($connection,$query);
 
         mysqli_close($connection);
@@ -29,7 +28,7 @@ class Controller{
         $connection = $conn->conn();
 
         $query = "SELECT id, path_of_downloads FROM videos WHERE link = '$video->link' LIMIT 1";
-        echo($query);
+
         $result = mysqli_query($connection,$query);
 
         mysqli_close($connection);
@@ -48,15 +47,15 @@ class Controller{
         mysqli_close($connection);
 
     }
-    
-    public function inProccess($link_id)
+
+    public function inProccess($video)
     {
         $conn = new Connection();
         $connection = $conn->conn();
-        $query = "UPDATE links SET success = 'inProcess'  WHERE id = '$link_id'";
+        $query = "UPDATE links SET success = 'inProcess'  WHERE id = '$video->id'";
         $result = mysqli_query($connection,$query);
         mysqli_close($connection);
-
+        
     }
 
     public function linkError($link_id)

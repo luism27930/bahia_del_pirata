@@ -18,7 +18,7 @@ class VideoDownloader
         $Converter = new VideoConverter();
 
         #Poner en video en proceso
-        $response = $controller->inProccess($video);
+        $controller->inProccess($video);
         #Validar si existe el link con el formato
         $response = $controller->findLinkAndFormat($video);
 
