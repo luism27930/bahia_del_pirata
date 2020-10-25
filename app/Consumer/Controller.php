@@ -37,12 +37,23 @@ class Controller{
         return $response;
 
     }
+    
 
     public function updateLink($video, $symbolic_link)
     {
         $conn = new Connection();
         $connection = $conn->conn();
         $query = "UPDATE links SET symbolic_link = '$symbolic_link', success = 'true'  WHERE id = '$video->id'";
+        $result = mysqli_query($connection,$query);
+        mysqli_close($connection);
+
+    }
+    
+    public function inProccess($link_id)
+    {
+        $conn = new Connection();
+        $connection = $conn->conn();
+        $query = "UPDATE links SET success = 'inProcess'  WHERE id = '$link_id'";
         $result = mysqli_query($connection,$query);
         mysqli_close($connection);
 

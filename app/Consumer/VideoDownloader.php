@@ -9,6 +9,7 @@ class VideoDownloader
 
     public function download($video)
     {
+
         #Directorio del usuario con el nombre del archivo de enlace simbólico en laravel
         $user_directory = '../../storage/app/videos/' . $video->id . '.' . $video->format;
         $symbolic_link = $video->id . '.' . $video->format;
@@ -16,9 +17,11 @@ class VideoDownloader
         $controller = new Controller();
         $Converter = new VideoConverter();
 
+        #Poner en video en proceso
+        $response = $controller->inProccess($video);
         #Validar si existe el link con el formato
         $response = $controller->findLinkAndFormat($video);
- 
+
         if ($response) {
             echo "Hay uno igual \n";
             #actualizamos la ruta nuevamente con la ruta del video exitente
