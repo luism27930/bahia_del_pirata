@@ -19,7 +19,7 @@ class CreateLinksTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
             $table->string('format');
-            $table->boolean('proccesed');
+            $table->string('success')->nullable();
             $table->string('link');
             $table->string('symbolic_link')->nullable();
             $table->timestamps();

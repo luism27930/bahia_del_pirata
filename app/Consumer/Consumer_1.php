@@ -12,7 +12,7 @@ use PhpAmqpLib\Connection\AMQPStreamConnection;
     echo " [*] Waiting for messages";
     
     $callback = function ($msg) {
-        echo "llegó...";
+        echo "\n Llegó...\n";
         $video=json_decode($msg->body);
         $Downloader = new VideoDownloader();
         $Downloader->download($video);
