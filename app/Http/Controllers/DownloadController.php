@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
 namespace App\Http\Controllers;
+
 use App\Link;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
@@ -16,7 +18,7 @@ class DownloadController extends Controller
      */
     public function index()
     {
-        $links = Link::where('user_id',auth()->user()->id)->where('success', 'true') ->get();
+        $links = Link::where('user_id', auth()->user()->id)->where('success', 'true')->get();
         return view('downloads.index', compact('links'));
     }
 
@@ -49,14 +51,12 @@ class DownloadController extends Controller
      */
     public function show($symbolicLink)
     {
-        $video_path= 'videos/'.$symbolicLink;
-        if (Storage::exists($video_path))
-        {
-            return response()->download(storage_path().'/app/'.$video_path);
-        }else{
+        $video_path = 'videos/' . $symbolicLink;
+        if (Storage::exists($video_path)) {
+            return response()->download(storage_path() . '/app/' . $video_path);
+        } else {
             dd("El archivo no existe");
         }
-    
     }
 
     /**
@@ -67,7 +67,6 @@ class DownloadController extends Controller
      */
     public function edit($id)
     {
-
     }
 
     /**
@@ -82,9 +81,9 @@ class DownloadController extends Controller
         request()->validate([
             'name' => 'required'
         ]);
- 
+
         $link = Link::find($id);
-   
+
         $link->name = request('name');
         $link->save();
         return redirect()->action('DownloadController@index');
@@ -99,11 +98,10 @@ class DownloadController extends Controller
     public function destroy($id)
     {
         $link = Link::find($id);
-        $symbolicLink = 'videos/'.$link->symbolicLink;
-        if (Storage::exists($symbolicLink))
-            {
-                Storage::delete($symbolicLink);
-            }
+        $symbolicLink = 'videos/' . $link->symbolic_link;
+        if (Storage::exists($symbolicLink)) {
+            Storage::delete($symbolicLink);
+        }
         $link->delete();
         return redirect()->action('DownloadController@index');
     }

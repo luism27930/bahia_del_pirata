@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Auth;
 use App\Link;
 use Illuminate\Http\Request;
@@ -16,13 +17,10 @@ class LinkController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
     }
 
     public function sendLink()
     {
-
-       
     }
 
     /**
@@ -32,11 +30,11 @@ class LinkController extends Controller
      */
     public function index()
     {
-        $links = Link::where('user_id',auth()->user()->id)->where('success','!=','true')->get();
-        
+        $links = Link::where('user_id', auth()->user()->id)->where('success', '!=', 'true')->get();
+
         return view('videos.index', compact('links'));
     }
-   
+
     /**
      * Show the form for creating a new resource.
      *
@@ -44,7 +42,6 @@ class LinkController extends Controller
      */
     public function create()
     {
-    
     }
 
     /**
@@ -55,15 +52,18 @@ class LinkController extends Controller
      */
     public function store(Request $request)
     {
-        
-        request()->validate([
-            'name' => 'required',
-            'link' => 'required',
-            'format' => 'required',
-        
-        ]);
 
         $link = new Link();
+        if (Link::where('user_id', Auth()->user()->id)->where('format', request('format'))->where('link', request('link'))->get()) {
+            return redirect()->action('LinkController@index');
+        }
+        request()->validate([
+            'name' => 'required',
+            'link' => 'required|unique:links,user_id',
+            'format' => 'required',
+        ]);
+
+
 
         $link->user_id = Auth()->user()->id;
         $link->name = request('name');
@@ -73,25 +73,23 @@ class LinkController extends Controller
 
         $link->save();
 
-            try {
-                $connection = new AMQPStreamConnection('shrimp-01.rmq.cloudamqp.com', 5672, 'gafnmalf', 'dfidH6NSrF-w5gZkZ25zXNsVsViFLI7P');
-                $channel = $connection->channel();
-                $channel->queue_declare('default', true, false, false, false);
-                $msg = new AMQPMessage($link);
-                $channel->basic_publish($msg, '', 'default');
-                $channel->close();
-                $connection->close();
-            } catch (\Throwable $th) {
-                
-            }
+        try {
+            $connection = new AMQPStreamConnection('shrimp-01.rmq.cloudamqp.com', 5672, 'gafnmalf', 'dfidH6NSrF-w5gZkZ25zXNsVsViFLI7P');
+            $channel = $connection->channel();
+            $channel->queue_declare('default', true, false, false, false);
+            $msg = new AMQPMessage($link);
+            $channel->basic_publish($msg, '', 'default');
+            $channel->close();
+            $connection->close();
+        } catch (\Throwable $th) {
+        }
 
 
 
         $directory = 'videos/';
-        if (!Storage::exists($directory))
-            {
-                Storage::makeDirectory($directory);
-            }
+        if (!Storage::exists($directory)) {
+            Storage::makeDirectory($directory);
+        }
 
         return redirect()->action('LinkController@index');
     }
@@ -102,9 +100,8 @@ class LinkController extends Controller
      * @param  \App\Link  $link
      * @return \Illuminate\Http\Response
      */
-    public function show($id){
-    
-
+    public function show($id)
+    {
     }
 
     /**
@@ -113,8 +110,8 @@ class LinkController extends Controller
      * @param  \App\Link  $link
      * @return \Illuminate\Http\Response
      */
-    public function edit($id){
-
+    public function edit($id)
+    {
     }
 
     /**
@@ -124,16 +121,20 @@ class LinkController extends Controller
      * @param  \App\Link  $link
      * @return \Illuminate\Http\Response
      */
-    public function update($id){
-
+    public function update($id)
+    {
+        $existRegister=Link::where('user_id', Auth()->user()->id)->where('format', request('format'))->where('link', request('link'))->get(); 
+        if ($existRegister) {
+            return redirect()->action('LinkController@index');
+        }
         request()->validate([
             'name' => 'required',
             'link' => 'required',
             'format' => 'required',
         ]);
- 
+
         $link = Link::find($id);
-   
+
         $link->name = request('name');
         $link->link = request('link');
         $link->format = request('format');
