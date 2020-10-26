@@ -28,7 +28,6 @@ class VideoDownloader
             $SymbolicLink->create($user_directory, $path_of_converted_video);
             $this->updateLink($video, $symbolic_link);
         }else {
-
             $response = $controller->findLink($video);
             if ($response) {
                 echo "Hay un link igual \n";
