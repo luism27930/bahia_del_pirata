@@ -16,8 +16,7 @@ class DownloadController extends Controller
      */
     public function index()
     {
-        $links = Link::where('user_id',auth()->user()->id)->where('proccesed', true) ->get();
-        
+        $links = Link::where('user_id',auth()->user()->id)->where('success', 'true') ->get();
         return view('downloads.index', compact('links'));
     }
 
@@ -43,14 +42,14 @@ class DownloadController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Descarga el video.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($name)
+    public function show($symbolicLink)
     {
-        $video_path= 'videos/'.$name;
+        $video_path= 'videos/'.$symbolicLink;
         if (Storage::exists($video_path))
         {
             return response()->download(storage_path().'/app/'.$video_path);

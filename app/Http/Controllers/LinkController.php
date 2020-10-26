@@ -32,11 +32,11 @@ class LinkController extends Controller
      */
     public function index()
     {
-        $links = Link::where('user_id',auth()->user()->id)->whereNull('success')->get();
+        $links = Link::where('user_id',auth()->user()->id)->where('success','!=','true')->get();
         
         return view('videos.index', compact('links'));
     }
-
+   
     /**
      * Show the form for creating a new resource.
      *
@@ -64,10 +64,13 @@ class LinkController extends Controller
         ]);
 
         $link = new Link();
+
         $link->user_id = Auth()->user()->id;
         $link->name = request('name');
         $link->link = request('link');
         $link->format = request('format');
+        $link->success = 'null';
+
         $link->save();
 
             try {
