@@ -42,6 +42,37 @@
 
 			<div class="form-row">
 				<div class="form-group col-md-12">
+					<label >Estado</label>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text">
+								<i style='font-size:24px' class='far'>&#xf587;</i>
+							</span>
+						</div>
+						<input type="text" name="name" class="form-control"
+
+			
+						@switch($link->success)
+							@case('null')
+							value="En espera" disabled
+								@break
+							@case('inProcess')
+							value="Procesando" disabled
+								@break
+							@case('false')
+							value="Error en la descarga" disabled
+								@break
+							@default
+								
+						@endswitch
+						>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="form-row">
+				<div class="form-group col-md-12">
 					
 					<label >Formato</label>
 					<div class="input-group">
