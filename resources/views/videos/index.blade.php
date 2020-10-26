@@ -1,14 +1,38 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-   
-    @if ($message = Session::get('msg'))
 
-        <div class='alert alert-success alert-dismissible my-3 container' id='mydiv'>
-            <a class='close' data-dismiss='alert' aria-label='close'>&times;</a>
-            <h5><center><strong>{{ $message }}</strong></center></h5>
-        </div>
-    @endif
+    
+@isset($success)
+
+    @switch($success)
+    @case(true)
+    <div class='alert alert-success alert-dismissible my-3 container' id='mydiv'>
+        <a class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+        <h5><center><strong>{{ $message }}</strong></center></h5>
+    </div>
+    @break
+    @case(false)
+    <div class='alert alert-danger alert-dismissible my-3 container' id='mydiv'>
+        <a class='close' data-dismiss='alert' aria-label='close'>&times;</a>
+        <h5><center><strong>{{ $message}}</strong></center></h5>
+    </div>
+        @break
+        @default
+        
+    @endswitch
+    
+@endisset
+
+
+<script>
+        // //for success
+        // swal("Done!", 'Video agregado exitosamente!', "success");
+        // //for error
+        // swal("Error!", 'results.message', "error");
+
+</script>
+
 	
     
         <div class="form-row my-2">
@@ -17,13 +41,13 @@
                     aria-label="Toolbar with button groups">
                     <div class="btn-group" role="group" aria-label="First group">
                     <a href="{{route('home')}}" class="btn btn-primary btn-lg my-2"  role="button"
-                        aria-pressed="true"><i class="fa fa-home"></i> Home</a>
+                        aria-pressed="true"><i class="fa fa-home"></i> Volver</a>
                     </div>
-                    <div class="text-center"><p class="h3">Links</p></div>
+                    <div class="text-center"><p class="h3">Listas de descarga</p></div>
                     <div class="btn-group">
                         <button style="background: orange; color: black" type="button"
                         class="btn btn-primary btn-lg my-2" id="new">
-                        <i class="fas fa-hand-holding"></i> New
+                        <i class="	fas fa-plus-circle">&#xf055;</i> Agregar
                         </button>
                     </div>
                 </div>
@@ -64,7 +88,7 @@
                                         name="name" value="{{ old('name') }}" required autocomplete="name">
                                        @error('name')
                                            <div class="invalid-feedback">
-                                               <strong> Name is required! </strong>
+                                               <strong> El nombre es requerido! </strong>
                                            </div>
                                        @enderror
                                     
@@ -85,7 +109,7 @@
                                         name="link" value="{{ old('link') }}" required autocomplete="link">
                                        @error('link')
                                            <div class="invalid-feedback">
-                                               <strong> Link is required! </strong>
+                                               <strong> El link o url es requerido! </strong>
                                            </div>
                                        @enderror
                                     
@@ -99,7 +123,7 @@
                                 <div class="form-group col-md-12">
                                     <div class="input-group">
                                         <select class="form-control" name="format" required>
-                                            <option value="">Format</option>
+                                            <option value="">Formato</option>
                                             @php
                                             $formats = ['mov', 'mpeg', 'avi', 'wmv', 'flv', '3gpp', 'webm', 'mp4', 'm4v'];
                                               foreach ($formats as $format) {
@@ -113,9 +137,9 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
     
-                            <input type="submit" class="btn btn-primary" value="Register">
+                            <input type="submit" class="btn btn-primary" value="Registrar">
                         </div>
                     </form>
                 </div>

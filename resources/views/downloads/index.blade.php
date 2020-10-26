@@ -17,9 +17,9 @@
                     aria-label="Toolbar with button groups">
                     <div class="btn-group" role="group" aria-label="First group">
                     <a href="{{route('home')}}" class="btn btn-primary btn-lg my-2"  role="button"
-                        aria-pressed="true"><i class="fa fa-home"></i> Home</a>
+                        aria-pressed="true"><i class="fa fa-home"></i> Volver</a>
                     </div>
-                    <div class="text-center"><p class="h3">Links</p></div>
+                    <div class="text-center"><p class="h3">Mis videos</p></div>
                 </div>
             </div>
         </div>

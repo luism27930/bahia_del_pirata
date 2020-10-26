@@ -17,7 +17,7 @@
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text">
-								<i style='font-size:24px' class='far'>&#xf587;</i>
+								<i style='font-size:24px' class='fa fa-video'>&#xf03d;</i>
 							</span>
 						</div>
 						<input type="text" name="name" class="form-control"
@@ -31,7 +31,8 @@
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text">
-								<i style='font-size:24px' class='far'>&#xf587;</i>
+								<i style='font-size:24px' class='material-icons'>&#xe80b;</i>
+
 							</span>
 						</div>
 						<input type="text" name="link" class="form-control"
@@ -45,7 +46,7 @@
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text">
-								<i style='font-size:24px' class='far'>&#xf587;</i>
+								<i style='font-size:24px' class='far fa-clock'>&#xf017;</i>
 							</span>
 						</div>
 						<input type="text" name="name" class="form-control"
@@ -65,7 +66,7 @@
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text">
-								<i style='font-size:24px' class='far'>&#xf587;</i>
+								<i style='font-size:24px' class='far'>&#xf1c8;</i>
 							</span>
 						</div>
 						<input type="text" name="format" class="form-control"
