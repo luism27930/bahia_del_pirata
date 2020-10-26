@@ -9,7 +9,7 @@ use PhpAmqpLib\Connection\AMQPStreamConnection;
 
     $channel->queue_declare('default', false, true, false, false);
 
-    echo " [*] Waiting for messages";
+    echo "\n [*] Waiting for messages \n";
     
     $callback = function ($msg) {
         echo "\n Llegó...\n";
