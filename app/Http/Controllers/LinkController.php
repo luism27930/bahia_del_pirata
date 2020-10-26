@@ -55,17 +55,21 @@ class LinkController extends Controller
      */
     public function store(Request $request)
     {
-      
-
-        $link = new Link();
-        if (Link::where('user_id', Auth()->user()->id)->where('format', request('format'))->where('link', request('link'))->get()) {
-            return redirect()->action('LinkController@index');
-        }
+        $success = true;
+        $message = "Video agregado con éxito";
         request()->validate([
             'name' => 'required',
-            'link' => 'required|unique:links,user_id',
+            'link' => 'required',
             'format' => 'required',
         ]);
+        $link = new Link();
+        if (Link::where('user_id', Auth()->user()->id)->where('format', $request->format)->where('link', $request->link)->exists()){
+            $success = false;
+            $message = "El video que intenta descargar ya fue descargado!";
+            $links = $this->all();
+            return view('videos.index', compact('links','success','message'));
+        }
+
 
 
 
