@@ -1,5 +1,5 @@
 <?php
-$formats=['avi', 'mov', 'mp4', 'ogg', 'mkv'];
+$formats = ['mov', 'mpeg', 'avi', 'wmv', 'flv', '3gpp', 'webm', 'mp4', 'm4v'];
 ?>
 <div class="modal fade" id="del{{$link->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog" >
@@ -14,7 +14,7 @@ $formats=['avi', 'mov', 'mp4', 'ogg', 'mkv'];
 				</div>
 			</div>
 			<div class="modal-footer ">
-				<form action="{{ route('link.destroy',$link->id) }}" method="POST">
+				<form action="{{ route('download.destroy',$link->id) }}" method="POST">
 					@csrf
 					@method('DELETE')
 

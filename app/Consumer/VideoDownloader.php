@@ -9,7 +9,6 @@ class VideoDownloader
 
     public function download($video)
     {
-
         #Directorio del usuario con el nombre del archivo de enlace simbólico en laravel
         $user_directory = '../../storage/app/videos/' . $video->id . '.' . $video->format;
         $symbolic_link = $video->id . '.' . $video->format;
@@ -29,7 +28,6 @@ class VideoDownloader
             $SymbolicLink->create($user_directory, $path_of_converted_video);
             $this->updateLink($video, $symbolic_link);
         }else {
-
             $response = $controller->findLink($video);
             if ($response) {
                 echo "Hay un link igual \n";
@@ -40,7 +38,8 @@ class VideoDownloader
                 $this->updateLink($video, $symbolic_link);
             } else {
                 #Descarga 
-                $path = 'Downloads/' . $video->id . '.%(ext)s';
+                //$path = 'Downloads/' . $video->id . '.%(ext)s';
+                $path = 'Downloads/' . $video->id . '.mp4';
                 $command = ('youtube-dl ' . escapeshellarg($video->link) . ' -f 18 -o ' . escapeshellarg($path));
 
                 $descriptorspec = array(

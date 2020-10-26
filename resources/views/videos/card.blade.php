@@ -90,8 +90,10 @@
 
 
 		<div class="card-footer extremeColor text-center">
-			<a href="#edit{{$link->id}}" data-toggle="modal" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span> Edit</a> ||
-			<a href="#del{{$link->id}}" data-toggle="modal" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+			<a href="#edit{{$link->id}}" data-toggle="modal" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span> Edit</a> 
+			@if($link->success == 'false')
+			||<a href="#del{{$link->id}}" data-toggle="modal" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+			@endif
 			@include('videos.modals')
 			
 		</div>

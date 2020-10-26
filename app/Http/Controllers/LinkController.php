@@ -55,15 +55,18 @@ class LinkController extends Controller
      */
     public function store(Request $request)
     {
-        
-        request()->validate([
-            'name' => 'required',
-            'link' => 'required',
-            'format' => 'required',
-        
-        ]);
 
         $link = new Link();
+        if(Link::where('user_id', Auth()->user()->id)->where('format',request('format'))->where('link',request('link'))->get()){
+            return redirect()->action('LinkController@index');
+        }
+        request()->validate([
+            'name' => 'required',
+            'link' => 'required|unique:links,user_id',
+            'format' => 'required',
+        ]);
+
+       
 
         $link->user_id = Auth()->user()->id;
         $link->name = request('name');
@@ -125,7 +128,9 @@ class LinkController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update($id){
-
+        if(Link::where('user_id', Auth()->user()->id)->where('format',request('format'))->where('link',request('link'))->get()){
+            return redirect()->action('LinkController@index');
+        }
         request()->validate([
             'name' => 'required',
             'link' => 'required',

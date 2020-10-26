@@ -101,7 +101,7 @@
                                         <select class="form-control" name="format" required>
                                             <option value="">Format</option>
                                             @php
-                                            $formats=['avi', 'mov', 'mp4', 'ogg', 'mkv'];
+                                            $formats = ['mov', 'mpeg', 'avi', 'wmv', 'flv', '3gpp', 'webm', 'mp4', 'm4v'];
                                               foreach ($formats as $format) {
                                                 echo "<option value='".$format."'>$format</option>";
                                             }

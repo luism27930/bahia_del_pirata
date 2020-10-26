@@ -1,5 +1,5 @@
 <?php
-$formats=['avi', 'mov', 'mp4', 'ogg', 'mkv'];
+$formats = ['mov', 'mpeg', 'avi', 'wmv', 'flv', '3gpp', 'webm', 'mp4', 'm4v'];
 ?>
 <div class="modal fade" id="del{{$link->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog" >
