@@ -13,7 +13,10 @@ use PhpAmqpLib\Connection\AMQPStreamConnection;
     
     $callback = function ($msg) {
         echo "\n Llegó...\n";
+    
+
         $video=json_decode($msg->body);
+        
         $Downloader = new VideoDownloader();
         $Downloader->download($video);
 

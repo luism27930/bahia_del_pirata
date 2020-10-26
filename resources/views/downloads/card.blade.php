@@ -49,7 +49,11 @@
 							</span>
 						</div>
 						<input type="text" name="name" class="form-control"
-						value="Procesado" disabled>
+
+	
+							value="Listo para descargar" disabled
+
+						>
 					</div>
 				</div>
 			</div>
