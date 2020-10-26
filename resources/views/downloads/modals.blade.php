@@ -14,7 +14,7 @@ $formats = ['mov', 'mpeg', 'avi', 'wmv', 'flv', '3gpp', 'webm', 'mp4', 'm4v'];
 				</div>
 			</div>
 			<div class="modal-footer ">
-				<form action="{{ route('link.destroy',$link->id) }}" method="POST">
+				<form action="{{ route('download.destroy',$link->id) }}" method="POST">
 					@csrf
 					@method('DELETE')
 
