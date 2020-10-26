@@ -57,43 +57,43 @@ class LinkController extends Controller
     {
       
 
-        // $link = new Link();
-        // if (Link::where('user_id', Auth()->user()->id)->where('format', request('format'))->where('link', request('link'))->get()) {
-        //     return redirect()->action('LinkController@index');
-        // }
-        // request()->validate([
-        //     'name' => 'required',
-        //     'link' => 'required|unique:links,user_id',
-        //     'format' => 'required',
-        // ]);
+        $link = new Link();
+        if (Link::where('user_id', Auth()->user()->id)->where('format', request('format'))->where('link', request('link'))->get()) {
+            return redirect()->action('LinkController@index');
+        }
+        request()->validate([
+            'name' => 'required',
+            'link' => 'required|unique:links,user_id',
+            'format' => 'required',
+        ]);
 
 
 
-        // $link->user_id = Auth()->user()->id;
-        // $link->name = request('name');
-        // $link->link = request('link');
-        // $link->format = request('format');
-        // $link->success = 'null';
+        $link->user_id = Auth()->user()->id;
+        $link->name = request('name');
+        $link->link = request('link');
+        $link->format = request('format');
+        $link->success = 'null';
 
-        // $link->save();
+        $link->save();
 
-        // try {
-        //     $connection = new AMQPStreamConnection('shrimp-01.rmq.cloudamqp.com', 5672, 'gafnmalf', 'dfidH6NSrF-w5gZkZ25zXNsVsViFLI7P');
-        //     $channel = $connection->channel();
-        //     $channel->queue_declare('default', true, false, false, false);
-        //     $msg = new AMQPMessage($link);
-        //     $channel->basic_publish($msg, '', 'default');
-        //     $channel->close();
-        //     $connection->close();
-        // } catch (\Throwable $th) {
-        // }
+        try {
+            $connection = new AMQPStreamConnection('shrimp-01.rmq.cloudamqp.com', 5672, 'gafnmalf', 'dfidH6NSrF-w5gZkZ25zXNsVsViFLI7P');
+            $channel = $connection->channel();
+            $channel->queue_declare('default', true, false, false, false);
+            $msg = new AMQPMessage($link);
+            $channel->basic_publish($msg, '', 'default');
+            $channel->close();
+            $connection->close();
+        } catch (\Throwable $th) {
+        }
 
 
 
-        // $directory = 'videos/';
-        // if (!Storage::exists($directory)) {
-        //     Storage::makeDirectory($directory);
-        // }
+        $directory = 'videos/';
+        if (!Storage::exists($directory)) {
+            Storage::makeDirectory($directory);
+        }
         $success = true;
         $message = "Video agregado con éxito";
         $links = $this->all();
