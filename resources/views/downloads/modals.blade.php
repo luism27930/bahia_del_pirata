@@ -59,8 +59,8 @@ $formats = ['mov', 'mpeg', 'avi', 'wmv', 'flv', '3gpp', 'webm', 'mp4', 'm4v'];
 						</div>
 					</div>
 					<div class="modal-footer" >
-						<button type="button" class="btn btn-secondary" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancel</button>
-						<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-check"></span> Update</button>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancelar</button>
+						<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-check"></span> Editar</button>
 					</div>
 				</form>
 			</div>
