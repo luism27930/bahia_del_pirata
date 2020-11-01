@@ -121,22 +121,6 @@ class LinkController extends Controller
      */
     public function update($id)
     {
-        $existRegister=Link::where('user_id', Auth()->user()->id)->where('format', request('format'))->where('link', request('link'))->get(); 
-        if ($existRegister) {
-            return redirect()->action('LinkController@index');
-        }
-        request()->validate([
-            'name' => 'required',
-            'link' => 'required',
-            'format' => 'required',
-        ]);
-
-        $link = Link::find($id);
-        $link->name = request('name');
-        $link->link = request('link');
-        $link->format = request('format');
-        $link->save();
-        return redirect()->action('LinkController@index');
     }
     /**
      * Remove the specified resource from storage.

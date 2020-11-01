@@ -98,7 +98,7 @@
             })
         });
         // The alert received from the Util class disappears.
-        $("#mydiv").delay(1900).fadeOut(800);
+        $("#mydiv").delay(2500).fadeOut(800);
     </script>
 
 
