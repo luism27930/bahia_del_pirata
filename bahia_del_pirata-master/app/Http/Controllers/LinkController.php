@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Link;
 use Illuminate\Http\Request;
-use App\Jobs\LinkJob;
-use GuzzleHttp\Psr7\Message;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
@@ -18,12 +16,10 @@ class LinkController extends Controller
     {
         $this->middleware('auth');
     }
-    public function sendLink()
-    {
-    }
+
     public function all()
     {
-       return Link::where('user_id', auth()->user()->id)->where('success', '!=', 'true')->get();
+        return Link::where('user_id', auth()->user()->id)->where('success', '!=', 'true')->get();
     }
     /**
      * Display a listing of the resource.
@@ -33,8 +29,18 @@ class LinkController extends Controller
     public function index()
     {
         $links = $this->all();
+        if(session('message')){
+            $success = session('success');
+            $message = session('message');
+            session()->forget('success');
+            session()->forget('message');
+            return view('videos.index', compact('links','success','message'));
+        }
+     
         return view('videos.index', compact('links'));
     }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -51,8 +57,8 @@ class LinkController extends Controller
      */
     public function store(Request $request)
     {
-        $success = true;
-        $message = "Video agregado con éxito";
+        session(['success' => true,'message' => 'Video agregado con éxito']);
+
         request()->validate([
             'name' => 'required',
             'link' => 'required',
@@ -60,8 +66,7 @@ class LinkController extends Controller
         ]);
         $link = new Link();
         if (Link::where('user_id', Auth()->user()->id)->where('format', $request->format)->where('link', $request->link)->exists()){
-            $success = false;
-            $message = "El video que intenta descargar ya fue descargado!";
+            session(['success' => false,'message' => 'El video que intenta descargar ya fue descargado!']);
             $links = $this->all();
             return view('videos.index', compact('links','success','message'));
         }
@@ -80,15 +85,14 @@ class LinkController extends Controller
             $channel->close();
             $connection->close();
         } catch (\Throwable $th) {
+            session(['success' => false,'message' => 'Algo ha salido mal, vuelve más tarde e intenta de nuevo!']);
         }
         $directory = 'videos/';
         if (!Storage::exists($directory)) {
             Storage::makeDirectory($directory);
         }
-        $success = true;
-        $message = "Video agregado con éxito";
-        $links = $this->all();
-        return view('videos.index', compact('links','success','message'));
+
+        return redirect()->action('LinkController@index');
     }
     /**
      * Display the specified resource.
@@ -144,6 +148,7 @@ class LinkController extends Controller
     {
         $link = Link::find($id);
         $link->delete();
+        session(['success' => true,'message' => 'Video eliminado!']);
         return redirect()->action('LinkController@index');
     }
 }
