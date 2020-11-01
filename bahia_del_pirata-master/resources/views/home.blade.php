@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-  <div class="text-center my-4"><p class="h1">Mi Contenido</p></div>
+  <div class="text-center my-4"><p class="h1">Opciones</p></div>
   <div class="row">
     <div class="col-lg-6 col-md-4 col-sm-6 mb-4 nocolor">
       <div class="card h-100 text-center ">

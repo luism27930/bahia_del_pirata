@@ -23,6 +23,25 @@
     <!-- Sweet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+
+    <style>
+
+link{
+    color: black !important;
+    font-family: 'Nunito', sans-serif !important;
+    font-weight: 600 !important;
+    padding: 0 25px !important;
+    font-size: 20px !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    text-decoration: none !important;
+}
+    </style>
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -30,7 +49,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <h5>Bahia del Pirata</h5>
+                    Bahía Pirata
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -59,7 +78,12 @@
 
 
                             <a class="btn blue-gradient buttonCreate " href="{{ route('logout') }}" onclick="event.preventDefault();
-                         document.getElementById('logout-form').submit();">
+                            document.getElementById('logout-form').submit();" style="color: black !important;
+                                                                                font-family: 'Nunito', sans-serif !important;
+                                                                                font-weight: 600 !important;
+                                                                                padding: 0 25px !important;
+                                                                                font-size: 1.6rem;
+                                                                                text-decoration: none !important;">
                                 {{ __('Logout') }}
                                 <i class="fas fa-sign-out-alt"></i>
                             </a>

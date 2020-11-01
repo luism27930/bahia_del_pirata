@@ -4515,12 +4515,16 @@ input[type=button].btn-block {
 
 .navbar-brand {
   display: inline-block;
+  color: black !important;
+  font-family: 'Nunito', sans-serif !important;
+  font-weight: 600 !important;
   padding-top: 0.32rem;
   padding-bottom: 0.32rem;
   margin-right: 1rem;
-  font-size: 1.125rem;
+  font-size: 1.6rem;
   line-height: inherit;
   white-space: nowrap;
+
 }
 
 .navbar-brand:hover,
