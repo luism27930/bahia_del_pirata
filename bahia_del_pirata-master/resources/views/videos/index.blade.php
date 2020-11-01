@@ -39,7 +39,7 @@
                     <div class="btn-group">
                         <button style="background: orange; color: black" type="button"
                         class="btn btn-primary btn-lg my-2" id="new">
-                        <i class="	fas fa-plus-circle">&#xf055;</i> Agregar
+                        <i class="fas fa-plus-circle">&#xf055;</i> Agregar
                         </button>
                     </div>
                 </div>
