@@ -49,7 +49,7 @@ $formats = ['mov', 'mpeg', 'avi', 'wmv', 'flv', '3gpp', 'webm', 'mp4', 'm4v'];
 								<div class="input-group">
 									<div class="input-group-prepend">
 										<span class="input-group-text">
-											<i class="material-icons">&#xe815;</i>
+											<i style='font-size:24px' class='fa fa-video'>&#xf03d;</i>
 										</span>
 									</div>
 									<input type="text" name="name" class="form-control"

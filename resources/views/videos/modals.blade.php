@@ -42,14 +42,13 @@ $formats = ['mov', 'mpeg', 'avi', 'wmv', 'flv', '3gpp', 'webm', 'mp4', 'm4v'];
 					@csrf
 					@method('PUT')
 					<div class="modal-body">
-		
 						<div class="form-row">
 							<div class="form-group col-md-12">
 								<label >Nombre del video</label>
 								<div class="input-group">
 									<div class="input-group-prepend">
 										<span class="input-group-text">
-											<i class="material-icons">&#xe815;</i>
+											<i class="material-icons" >&#xf03d;</i>
 										</span>
 									</div>
 									<input type="text" name="name" class="form-control"
@@ -64,7 +63,7 @@ $formats = ['mov', 'mpeg', 'avi', 'wmv', 'flv', '3gpp', 'webm', 'mp4', 'm4v'];
 								<div class="input-group">
 									<div class="input-group-prepend">
 										<span class="input-group-text">
-											<i class="material-icons">&#xe815;</i>
+											<i class="material-icons">&#xe80b;</i>
 										</span>
 									</div>
 									<input type="text" name="link" class="form-control"
