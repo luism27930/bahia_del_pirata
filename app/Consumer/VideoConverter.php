@@ -12,7 +12,6 @@ class VideoConverter {
     {
         $newPath = 'Downloads/'.$link_id.'.'.$format;
         $command = ('ffmpeg -i '. escapeshellarg($original_path).' '. escapeshellarg($newPath));
-    
         $descriptorspec = array(
             0 => array("pipe", "r"), // stdin
             1 => array("pipe", "w"), // stdout
@@ -27,7 +26,6 @@ class VideoConverter {
         $data = json_encode(array('status' => $ret, 'errors' => $stderr,
             'url_orginal' => $newPath, 'output' => $stdout,
             'command' => $command));
-        
         return $newPath;
 
     }

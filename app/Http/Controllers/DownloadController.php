@@ -86,9 +86,7 @@ class DownloadController extends Controller
         request()->validate([
             'name' => 'required'
         ]);
-
         $link = Link::find($id);
-
         $link->name = request('name');
         $link->save();
         return redirect()->action('DownloadController@index');
