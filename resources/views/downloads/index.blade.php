@@ -1,16 +1,12 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-   
     @if ($message = Session::get('msg'))
-
         <div class='alert alert-success alert-dismissible my-3 container' id='mydiv'>
             <a class='close' data-dismiss='alert' aria-label='close'>&times;</a>
             <h5><center><strong>{{ $message }}</strong></center></h5>
         </div>
     @endif
-	
-    
         <div class="form-row my-2">
             <div class="form-group col-md-12">
                 <div class="btn-toolbar justify-content-between" role="toolbar"
@@ -23,14 +19,11 @@
                 </div>
             </div>
         </div>
-        
         <div class="row">
             @if (!empty($links))
                 {{-- Es como decir require --}}
                 @each('downloads.card', $links, 'link')
-    
             @endif
         </div>
-        
     </div>
     @endsection

@@ -1,10 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-
-    
 @isset($success)
-
     @switch($success)
     @case(true)
     <div class='alert alert-success alert-dismissible my-3 container' id='mydiv'>
@@ -18,10 +15,8 @@
         <h5><center><strong>{{ $message}}</strong></center></h5>
     </div>
         @break
-        @default
-        
+        @default 
     @endswitch
-    
 @endisset
 
 
@@ -32,9 +27,6 @@
         // swal("Error!", 'results.message', "error");
 
 </script>
-
-	
-    
         <div class="form-row my-2">
             <div class="form-group col-md-12">
                 <div class="btn-toolbar justify-content-between" role="toolbar"
@@ -53,15 +45,12 @@
                 </div>
             </div>
         </div>
-        
         <div class="row">
             @if (!empty($links))
                 {{-- Es como decir require --}}
                 @each('videos.card', $links, 'link')
-    
             @endif
         </div>
-        
         <div id="Modal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="articleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -76,7 +65,6 @@
                         <div class="modal-body">
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-
                                     <label >Nombre del video</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -91,13 +79,11 @@
                                                <strong> El nombre es requerido! </strong>
                                            </div>
                                        @enderror
-                                    
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
-
                                     <label >Link del video</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -112,13 +98,9 @@
                                                <strong> El link o url es requerido! </strong>
                                            </div>
                                        @enderror
-                                    
                                     </div>
                                 </div>
                             </div>
-
-
-
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <div class="input-group">
@@ -134,11 +116,9 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-    
                             <input type="submit" class="btn btn-primary" value="Registrar">
                         </div>
                     </form>
