@@ -20,6 +20,7 @@ Route::get('/', function () {
 
 Route::resource('link', 'LinkController');
 Route::resource('download', 'DownloadController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

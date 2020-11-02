@@ -6,14 +6,15 @@ use Auth;
 use App\Link;
 use Illuminate\Http\Request;
 use App\Jobs\LinkJob;
-
+use GuzzleHttp\Psr7\Message;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
 use Illuminate\Support\Facades\Storage; #videos in local disk
 
 class LinkController extends Controller
-{
+{   
+   
     public function __construct()
     {
         $this->middleware('auth');
@@ -22,7 +23,10 @@ class LinkController extends Controller
     public function sendLink()
     {
     }
-
+    public function all()
+    {
+       return Link::where('user_id', auth()->user()->id)->where('success', '!=', 'true')->get();
+    }
     /**
      * Display a listing of the resource.
      *
@@ -30,8 +34,7 @@ class LinkController extends Controller
      */
     public function index()
     {
-        $links = Link::where('user_id', auth()->user()->id)->where('success', '!=', 'true')->get();
-
+        $links = $this->all();
         return view('videos.index', compact('links'));
     }
 
@@ -52,16 +55,21 @@ class LinkController extends Controller
      */
     public function store(Request $request)
     {
-
-        $link = new Link();
-        if (Link::where('user_id', Auth()->user()->id)->where('format', request('format'))->where('link', request('link'))->get()) {
-            return redirect()->action('LinkController@index');
-        }
+        $success = true;
+        $message = "Video agregado con éxito";
         request()->validate([
             'name' => 'required',
-            'link' => 'required|unique:links,user_id',
+            'link' => 'required',
             'format' => 'required',
         ]);
+        $link = new Link();
+        if (Link::where('user_id', Auth()->user()->id)->where('format', $request->format)->where('link', $request->link)->exists()){
+            $success = false;
+            $message = "El video que intenta descargar ya fue descargado!";
+            $links = $this->all();
+            return view('videos.index', compact('links','success','message'));
+        }
+
 
 
 
@@ -90,8 +98,11 @@ class LinkController extends Controller
         if (!Storage::exists($directory)) {
             Storage::makeDirectory($directory);
         }
+        $success = true;
+        $message = "Video agregado con éxito";
+        $links = $this->all();
+        return view('videos.index', compact('links','success','message'));
 
-        return redirect()->action('LinkController@index');
     }
 
     /**

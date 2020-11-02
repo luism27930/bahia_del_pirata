@@ -10,7 +10,7 @@ $formats = ['mov', 'mpeg', 'avi', 'wmv', 'flv', '3gpp', 'webm', 'mp4', 'm4v'];
 			</div>
 			<div class="modal-body ">
 				<div class="container-fluid">
-					<h5><center>Are you sure that you want to delete this register?</center></h5>
+					<h5><center>Está seguro de que desea eliminar la cola?</center></h5>
 				</div>
 			</div>
 			<div class="modal-footer ">
@@ -20,9 +20,9 @@ $formats = ['mov', 'mpeg', 'avi', 'wmv', 'flv', '3gpp', 'webm', 'mp4', 'm4v'];
 
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">
 					<span class="glyphicon glyphicon-remove"></span>
-						Cancel
+						Cancelar
 					</button>
-					<button type="submit" class="btn btn-danger">Delete</button>
+					<button type="submit" class="btn btn-danger">Eliminar</button>
 
 				</form>
 				</div>
@@ -98,8 +98,8 @@ $formats = ['mov', 'mpeg', 'avi', 'wmv', 'flv', '3gpp', 'webm', 'mp4', 'm4v'];
 
 					</div>
 					<div class="modal-footer" >
-						<button type="button" class="btn btn-secondary" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancel</button>
-						<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-check"></span> Update</button>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancelar</button>
+						<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-check"></span> Actualizar</button>
 					</div>
 				</form>
 			</div>

@@ -17,7 +17,7 @@
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text">
-								<i style='font-size:24px' class='far'>&#xf587;</i>
+								<i style='font-size:24px' class='fa fa-video'>&#xf03d;</i>
 							</span>
 						</div>
 						<input type="text" name="name" class="form-control"
@@ -31,7 +31,7 @@
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text">
-								<i style='font-size:24px' class='far'>&#xf587;</i>
+								<i style='font-size:24px' class='material-icons'>&#xe80b;</i>
 							</span>
 						</div>
 						<input type="text" name="link" class="form-control"
@@ -46,9 +46,10 @@
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text">
-								<i style='font-size:24px' class='far'>&#xf587;</i>
+								<i style='font-size:24px' class='far fa-clock'>&#xf017;</i>
 							</span>
 						</div>
+
 						<input type="text" name="name" class="form-control"
 
 			
@@ -78,7 +79,7 @@
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text">
-								<i style='font-size:24px' class='far'>&#xf587;</i>
+								<i style='font-size:24px' class='far'>&#xf1c8;</i>
 							</span>
 						</div>
 						<input type="text" name="format" class="form-control"
@@ -90,9 +91,8 @@
 
 
 		<div class="card-footer extremeColor text-center">
-			<a href="#edit{{$link->id}}" data-toggle="modal" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span> Edit</a> 
 			@if($link->success == 'false')
-			||<a href="#del{{$link->id}}" data-toggle="modal" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+			||<a href="#del{{$link->id}}" data-toggle="modal" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
 			@endif
 			@include('videos.modals')
 			
