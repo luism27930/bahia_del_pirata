@@ -39,7 +39,6 @@
 					</div>
 				</div>
 			</div>
-
 			<div class="form-row">
 				<div class="form-group col-md-12">
 					<label >Estado</label>
@@ -49,10 +48,7 @@
 								<i style='font-size:24px' class='far fa-clock'>&#xf017;</i>
 							</span>
 						</div>
-
 						<input type="text" name="name" class="form-control"
-
-			
 						@switch($link->success)
 							@case('null')
 							value="En espera" disabled
@@ -63,15 +59,12 @@
 							@case('false')
 							value="Error en la descarga" disabled
 								@break
-							@default
-								
+							@default		
 						@endswitch
 						>
 					</div>
 				</div>
 			</div>
-
-
 			<div class="form-row">
 				<div class="form-group col-md-12">
 					
@@ -88,14 +81,11 @@
 				</div>
 			</div>
 		</div>
-
-
 		<div class="card-footer extremeColor text-center">
 			@if($link->success == 'false')
 			||<a href="#del{{$link->id}}" data-toggle="modal" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
 			@endif
 			@include('videos.modals')
-			
 		</div>
 	</div>
 </div>

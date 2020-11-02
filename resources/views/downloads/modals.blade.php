@@ -42,7 +42,6 @@ $formats = ['mov', 'mpeg', 'avi', 'wmv', 'flv', '3gpp', 'webm', 'mp4', 'm4v'];
 					@csrf
 					@method('PUT')
 					<div class="modal-body">
-		
 						<div class="form-row">
 							<div class="form-group col-md-12">
 								<label >Nombre del video</label>

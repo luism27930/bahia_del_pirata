@@ -12,13 +12,11 @@ class VideoConverter {
     {
         $newPath = 'Downloads/'.$link_id.'.'.$format;
         $command = ('ffmpeg -i '. escapeshellarg($original_path).' '. escapeshellarg($newPath));
-    
         $descriptorspec = array(
             0 => array("pipe", "r"), // stdin
             1 => array("pipe", "w"), // stdout
             2 => array("pipe", "w"), // stderr
         );
-        
         $process = proc_open($command, $descriptorspec, $pipes);
         $stdout = stream_get_contents($pipes[1]);
         fclose($pipes[1]);
@@ -28,7 +26,6 @@ class VideoConverter {
         $data = json_encode(array('status' => $ret, 'errors' => $stderr,
             'url_orginal' => $newPath, 'output' => $stdout,
             'command' => $command));
-        
         return $newPath;
 
     }

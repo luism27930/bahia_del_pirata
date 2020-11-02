@@ -41,13 +41,11 @@ class VideoDownloader
                 //$path = 'Downloads/' . $video->id . '.%(ext)s';//no funciona en windows
                 $path = 'Downloads/' . $video->id . '.mp4';
                 $command = ('youtube-dl ' . escapeshellarg($video->link) . ' -f 18 -o ' . escapeshellarg($path));
-
                 $descriptorspec = array(
                     0 => array("pipe", "r"), // stdin
                     1 => array("pipe", "w"), // stdout
                     2 => array("pipe", "w"), // stderr
                 );
-                
                 $process = proc_open($command, $descriptorspec, $pipes);
                 $stdout = stream_get_contents($pipes[1]);
                 fclose($pipes[1]);
@@ -62,7 +60,6 @@ class VideoDownloader
                     )
                 );
                 // echo $data;
-
                 #Ruta del archivo
                 $path = 'Downloads/' . $video->id . '.mp4';
                 $path_of_converted_video = '';
@@ -71,21 +68,16 @@ class VideoDownloader
                     if ($video->format != 'mp4') {
                         $path_of_converted_video = $Converter->convert($video->id, $path, $video->format);
                         unlink($path); // Eliminamos el video descargado en mp4 por defecto
-
                     } else {
-
                         $path_of_converted_video = $path;
                     }
-
                     $SymbolicLink->create($user_directory, $path_of_converted_video);
                     $controller->saveVideo($video, $path_of_converted_video);
                     $this->updateLink($video, $symbolic_link);
                 } else {
-
                     //En caso de error en la descarga
                     $controller = new Controller();
                     $controller->linkError($video->id);
-
                 }
             }
         }

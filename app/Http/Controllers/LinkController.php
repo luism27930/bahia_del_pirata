@@ -69,18 +69,12 @@ class LinkController extends Controller
             $links = $this->all();
             return view('videos.index', compact('links','success','message'));
         }
-
-
-
-
         $link->user_id = Auth()->user()->id;
         $link->name = request('name');
         $link->link = request('link');
         $link->format = request('format');
         $link->success = 'null';
-
         $link->save();
-
         try {
             $connection = new AMQPStreamConnection('shrimp-01.rmq.cloudamqp.com', 5672, 'gafnmalf', 'dfidH6NSrF-w5gZkZ25zXNsVsViFLI7P');
             $channel = $connection->channel();
@@ -91,9 +85,6 @@ class LinkController extends Controller
             $connection->close();
         } catch (\Throwable $th) {
         }
-
-
-
         $directory = 'videos/';
         if (!Storage::exists($directory)) {
             Storage::makeDirectory($directory);
@@ -102,7 +93,6 @@ class LinkController extends Controller
         $message = "Video agregado con éxito";
         $links = $this->all();
         return view('videos.index', compact('links','success','message'));
-
     }
 
     /**
@@ -145,7 +135,6 @@ class LinkController extends Controller
         ]);
 
         $link = Link::find($id);
-
         $link->name = request('name');
         $link->link = request('link');
         $link->format = request('format');
