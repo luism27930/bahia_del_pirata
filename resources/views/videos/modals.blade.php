@@ -17,13 +17,11 @@ $formats = ['mov', 'mpeg', 'avi', 'wmv', 'flv', '3gpp', 'webm', 'mp4', 'm4v'];
 				<form action="{{ route('link.destroy',$link->id) }}" method="POST">
 					@csrf
 					@method('DELETE')
-
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">
 					<span class="glyphicon glyphicon-remove"></span>
 						Cancelar
 					</button>
 					<button type="submit" class="btn btn-danger">Eliminar</button>
-
 				</form>
 				</div>
 			</div>
@@ -56,7 +54,6 @@ $formats = ['mov', 'mpeg', 'avi', 'wmv', 'flv', '3gpp', 'webm', 'mp4', 'm4v'];
 								</div>
 							</div>
 						</div>
-
 						<div class="form-row">
 							<div class="form-group col-md-12">
 								<label >Link</label>
@@ -71,9 +68,6 @@ $formats = ['mov', 'mpeg', 'avi', 'wmv', 'flv', '3gpp', 'webm', 'mp4', 'm4v'];
 								</div>
 							</div>
 						</div>
-					
-						
-
 						<div class="form-row">
 							<div class="form-group col-md-12">
 								<div class="form-group">
@@ -92,9 +86,6 @@ $formats = ['mov', 'mpeg', 'avi', 'wmv', 'flv', '3gpp', 'webm', 'mp4', 'm4v'];
 								</div>
 							</div>
 						</div>
-
-	
-
 					</div>
 					<div class="modal-footer" >
 						<button type="button" class="btn btn-secondary" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span>Cancelar</button>
