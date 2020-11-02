@@ -18,7 +18,6 @@ class VideoConverter {
             1 => array("pipe", "w"), // stdout
             2 => array("pipe", "w"), // stderr
         );
-        
         $process = proc_open($command, $descriptorspec, $pipes);
         $stdout = stream_get_contents($pipes[1]);
         fclose($pipes[1]);
