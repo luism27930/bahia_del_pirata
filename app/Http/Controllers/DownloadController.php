@@ -15,7 +15,6 @@ class DownloadController extends Controller
     {
         $this->middleware('auth');
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +25,6 @@ class DownloadController extends Controller
         $links = Link::where('user_id', auth()->user()->id)->where('success', 'true')->get();
         return view('downloads.index', compact('links'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -36,7 +34,6 @@ class DownloadController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -47,7 +44,6 @@ class DownloadController extends Controller
     {
         //
     }
-
     /**
      * Descarga el video.
      *
@@ -63,7 +59,6 @@ class DownloadController extends Controller
             dd("El archivo no existe");
         }
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -73,7 +68,6 @@ class DownloadController extends Controller
     public function edit($id)
     {
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -91,7 +85,6 @@ class DownloadController extends Controller
         $link->save();
         return redirect()->action('DownloadController@index');
     }
-
     /**
      * Remove the specified resource from storage.
      *

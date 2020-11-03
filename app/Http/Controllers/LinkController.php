@@ -14,12 +14,10 @@ use Illuminate\Support\Facades\Storage; #videos in local disk
 
 class LinkController extends Controller
 {   
-   
     public function __construct()
     {
         $this->middleware('auth');
     }
-
     public function sendLink()
     {
     }
@@ -37,7 +35,6 @@ class LinkController extends Controller
         $links = $this->all();
         return view('videos.index', compact('links'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -46,7 +43,6 @@ class LinkController extends Controller
     public function create()
     {
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -94,7 +90,6 @@ class LinkController extends Controller
         $links = $this->all();
         return view('videos.index', compact('links','success','message'));
     }
-
     /**
      * Display the specified resource.
      *
@@ -104,7 +99,6 @@ class LinkController extends Controller
     public function show($id)
     {
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -114,7 +108,6 @@ class LinkController extends Controller
     public function edit($id)
     {
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -141,7 +134,6 @@ class LinkController extends Controller
         $link->save();
         return redirect()->action('LinkController@index');
     }
-
     /**
      * Remove the specified resource from storage.
      *
