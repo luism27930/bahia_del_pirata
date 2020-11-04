@@ -27,7 +27,7 @@ $formats = ['mov', 'mpeg', 'avi', 'wmv', 'flv', '3gpp', 'webm', 'mp4', 'm4v'];
 			</div>
 		</div>
 	</div>
-	<!-- /.modal -->
+	
 	<!-- Edit -->
 	<div id="edit{{$link->id}}" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="linkModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">

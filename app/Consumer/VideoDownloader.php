@@ -40,6 +40,7 @@ class VideoDownloader
             } else {
                 #Descarga 
                 //$path = 'Downloads/' . $video->id . '.%(ext)s';//no funciona en windows
+                //$path = 'Downloads/' . $video->id . '.%(ext)s';//no funciona en windows
                 $path = 'Downloads/' . $video->id . '.mp4';
                 $command = ('youtube-dl ' . escapeshellarg($video->link) . ' -f 18 -o ' . escapeshellarg($path));
                 $descriptorspec = array(
