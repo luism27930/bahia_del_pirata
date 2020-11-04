@@ -67,8 +67,7 @@ class LinkController extends Controller
         $link = new Link();
         if (Link::where('user_id', Auth()->user()->id)->where('format', $request->format)->where('link', $request->link)->exists()){
             session(['success' => false,'message' => 'El video que intenta descargar ya fue descargado!']);
-            $links = $this->all();
-            return view('videos.index', compact('links','success','message'));
+            return redirect()->action('LinkController@index');
         }
         $link->user_id = Auth()->user()->id;
         $link->name = request('name');
