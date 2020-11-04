@@ -15,7 +15,7 @@
                     <a href="{{route('home')}}" class="btn btn-primary btn-lg my-2"  role="button"
                         aria-pressed="true"><i class="fa fa-home"></i> Volver</a>
                     </div>
-                    <div class="text-center"><p class="h3">Mis videos</p></div>
+                    <div class="text-center"><p class="h3"  style="color: #ffffff;">Mis videos</p></div>
                 </div>
             </div>
         </div>

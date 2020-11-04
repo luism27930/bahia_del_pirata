@@ -1,2 +1,5 @@
-Gestos para descargas de video utilizando RabitMQ como servidor de  colas.
+
+Habilitar php_sockets.dll en.ini
+
+composer require php-amqplib/php-amqplib
 

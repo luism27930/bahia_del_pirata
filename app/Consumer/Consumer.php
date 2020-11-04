@@ -2,7 +2,7 @@
 require_once __DIR__ . '/vendor/autoload.php';
 require('VideoDownloader.php');
 use PhpAmqpLib\Connection\AMQPStreamConnection;
-    $connection = new AMQPStreamConnection('shrimp-01.rmq.cloudamqp.com', 5672, 'gafnmalf', 'dfidH6NSrF-w5gZkZ25zXNsVsViFLI7P');
+    $connection = new AMQPStreamConnection('shrimp-01.rmq.cloudamqp.com', 5672, 'gafnmalf', 'dfidH6NSrF-w5gZkZ25zXNsVsViFLI7P','gafnmalf');
     $channel = $connection->channel();
     $channel->queue_declare('default', false, true, false, false);
     echo "\n [*] Waiting for messages \n";
