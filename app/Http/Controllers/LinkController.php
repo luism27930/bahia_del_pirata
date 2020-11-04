@@ -16,7 +16,6 @@ class LinkController extends Controller
     {
         $this->middleware('auth');
     }
-
     public function all()
     {
         return Link::where('user_id', auth()->user()->id)->where('success', '!=', 'true')->get();
@@ -39,8 +38,6 @@ class LinkController extends Controller
      
         return view('videos.index', compact('links'));
     }
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -92,7 +89,6 @@ class LinkController extends Controller
         if (!Storage::exists($directory)) {
             Storage::makeDirectory($directory);
         }
-
         return redirect()->action('LinkController@index');
     }
     /**
