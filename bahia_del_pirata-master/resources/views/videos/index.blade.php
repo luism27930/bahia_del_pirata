@@ -37,7 +37,7 @@
                     <a href="{{route('home')}}" class="btn btn-primary btn-lg my-2" role="button" aria-pressed="true"><i class="fa fa-home"></i> Volver</a>
                 </div>
                 <div class="text-center">
-                    <p class="h3">Listas de descarga</p>
+                    <p class="h3" style="color: #ffffff;">Gestión de descargas</p>
                 </div>
                 <div class="btn-group">
                     <button style="background: orange; color: black" type="button" class="btn btn-primary btn-lg my-2" id="new">

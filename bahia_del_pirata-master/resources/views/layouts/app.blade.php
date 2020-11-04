@@ -25,6 +25,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
 
     <style>
+                html, body {
+                background-image:url("images/background.jpg");
+                color: #ffffff;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 600;
+                height: 100vh;
+                margin: 0;
+        
+            }
 
 link{
     color: black !important;
@@ -37,6 +46,7 @@ link{
     text-decoration: none !important;
 }
     </style>
+    
 
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -66,13 +76,23 @@ link{
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}"style="color: black !important;
+                            font-family: 'Nunito', sans-serif !important;
+                            font-weight: 600 !important;
+                            padding: 0 25px !important;
+                            font-size: 1.2rem;
+                            text-decoration: none !important;">{{ __('Iniciar sesión') }}</a>
                         </li>
-                        @if (Route::has('register'))
+                        {{-- @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}"style="color: black !important;
+                            font-family: 'Nunito', sans-serif !important;
+                            font-weight: 600 !important;
+                            padding: 0 25px !important;
+                            font-size: 1.2rem;
+                            text-decoration: none !important;">{{ __('Registrarme') }}</a>
                         </li>
-                        @endif
+                        @endif --}}
                         @else
                         <li class="nav-item dropdown">
 
@@ -82,9 +102,9 @@ link{
                                                                                 font-family: 'Nunito', sans-serif !important;
                                                                                 font-weight: 600 !important;
                                                                                 padding: 0 25px !important;
-                                                                                font-size: 1.6rem;
+                                                                                font-size: 1.3rem;
                                                                                 text-decoration: none !important;">
-                                {{ __('Logout') }}
+                                {{ __('Cerrar sesión') }}
                                 <i class="fas fa-sign-out-alt"></i>
                             </a>
 
@@ -161,7 +181,40 @@ link{
                 return false;
             })
         }
+
+
+        // Login 2
+ 
+        $(document).ready(function(){
+        $('.login-info-box').fadeOut();
+        $('.login-show').addClass('show-log-panel');
+    });
+    
+    
+    $('.login-reg-panel input[type="radio"]').on('change', function() {
+        if($('#log-login-show').is(':checked')) {
+            $('.register-info-box').fadeOut(); 
+            $('.login-info-box').fadeIn();
+            
+            $('.white-panel').addClass('right-log');
+            $('.register-show').addClass('show-log-panel');
+            $('.login-show').removeClass('show-log-panel');
+            
+        }
+        else if($('#log-reg-show').is(':checked')) {
+            $('.register-info-box').fadeIn();
+            $('.login-info-box').fadeOut();
+            
+            $('.white-panel').removeClass('right-log');
+            
+            $('.login-show').addClass('show-log-panel');
+            $('.register-show').removeClass('show-log-panel');
+        }
+    });
+
     </script>
+
+
 </body>
 
 </html>
