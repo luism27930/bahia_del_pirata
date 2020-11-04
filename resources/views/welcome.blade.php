@@ -8,14 +8,17 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         <!-- Styles -->
         <style>
+          
             html, body {
-                background-color: #fff;
-                color: #636b6f;
+                background-image:url("images/background.jpg");
+                color: #ffffff;
                 font-family: 'Nunito', sans-serif;
-                font-weight: 200;
+                font-weight: 600;
                 height: 100vh;
                 margin: 0;
+        
             }
+      
             .full-height {
                 height: 100vh;
             }
@@ -39,13 +42,15 @@
                 font-size: 84px;
             }
             .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
+                color: #ffffff;
+                font-family: 'Nunito', sans-serif;
                 font-weight: 600;
-                letter-spacing: .1rem;
+                padding: 0 25px;
+                font-size: 20px;
+                height: 100vh;
+                margin: 0;
                 text-decoration: none;
-                text-transform: uppercase;
+
             }
             .m-b-md {
                 margin-bottom: 30px;
@@ -57,22 +62,23 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Go to Home</a>
+                    
+                        <a href="{{ url('/home') }}">Ir al Menú</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}">Iniciar sesión</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
+                        {{-- @if (Route::has('register'))
+                            <a href="{{ route('login') }}">Registrarme</a>
+                        @endif --}}
                     @endauth
                 </div>
             @endif
-            <div class="content">
+            <div class="content" style="margin-top: -30%">
                 <div class="title m-b-md">
-                    Bienvenido a la Bahia del Pirata
+                    ¡Bienvenido a la Bahía del Pirata!
                 </div>
-                <div class="h5">
-                    Inicia sesión para que empieces a guardar tus videos favoritos y descargarlos cuando quieras!
+                <div>
+                  <h2>  Inicia sesión para que empieces a guardar tus videos favoritos y descargarlos cuando quieras! </h2>
                 </div>
             </div>
         </div>

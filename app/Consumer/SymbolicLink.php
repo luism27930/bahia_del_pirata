@@ -7,10 +7,9 @@ class SymbolicLink {
      * deberá pasar el $user_directory para llegar al actual
      */
     public function create($user_directory, $original_path)
-    {   # Downloads/'.$link_id.'.'.$format
-        #../../storage/app/videos/' . $video->id . '.' . $video->format;
-        $command = ('ln -s '. '../../../app/Consumer/'.escapeshellarg($original_path).' '. escapeshellarg($user_directory));
-        #ln -s ../../../app/Consumer/Downloads/5.avi ../../storage/app/videos/hatacuandonono.avi
+    {  
+        $command = ('ln ' .escapeshellarg($original_path).' '. escapeshellarg($user_directory));
+
         $descriptorspec = array(
             0 => array("pipe", "r"), // stdin
             1 => array("pipe", "w"), // stdout
@@ -27,6 +26,5 @@ class SymbolicLink {
 
 
     }
-
 
 }

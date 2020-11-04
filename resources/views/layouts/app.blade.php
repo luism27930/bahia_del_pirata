@@ -23,6 +23,35 @@
     <!-- Sweet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+
+    <style>
+                html, body {
+                background-image:url("images/background.jpg");
+                color: #ffffff;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 600;
+                height: 100vh;
+                margin: 0;
+        
+            }
+
+link{
+    color: black !important;
+    font-family: 'Nunito', sans-serif !important;
+    font-weight: 600 !important;
+    padding: 0 25px !important;
+    font-size: 20px !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    text-decoration: none !important;
+}
+    </style>
+    
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -30,7 +59,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <h5>Bahia del Pirata</h5>
+                    Bahía Pirata
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -47,20 +76,35 @@
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}"style="color: black !important;
+                            font-family: 'Nunito', sans-serif !important;
+                            font-weight: 600 !important;
+                            padding: 0 25px !important;
+                            font-size: 1.2rem;
+                            text-decoration: none !important;">{{ __('Iniciar sesión') }}</a>
                         </li>
-                        @if (Route::has('register'))
+                        {{-- @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{ route('login') }}"style="color: black !important;
+                            font-family: 'Nunito', sans-serif !important;
+                            font-weight: 600 !important;
+                            padding: 0 25px !important;
+                            font-size: 1.2rem;
+                            text-decoration: none !important;">{{ __('Registrarme') }}</a>
                         </li>
-                        @endif
+                        @endif --}}
                         @else
                         <li class="nav-item dropdown">
 
 
                             <a class="btn blue-gradient buttonCreate " href="{{ route('logout') }}" onclick="event.preventDefault();
-                         document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                            document.getElementById('logout-form').submit();" style="color: black !important;
+                                                                                font-family: 'Nunito', sans-serif !important;
+                                                                                font-weight: 600 !important;
+                                                                                padding: 0 25px !important;
+                                                                                font-size: 1.3rem;
+                                                                                text-decoration: none !important;">
+                                {{ __('Cerrar sesión') }}
                                 <i class="fas fa-sign-out-alt"></i>
                             </a>
 
@@ -98,7 +142,7 @@
             })
         });
         // The alert received from the Util class disappears.
-        $("#mydiv").delay(1900).fadeOut(800);
+        $("#mydiv").delay(2500).fadeOut(800);
     </script>
 
 
@@ -137,7 +181,40 @@
                 return false;
             })
         }
+
+
+        // Login 2
+ 
+        $(document).ready(function(){
+        $('.login-info-box').fadeOut();
+        $('.login-show').addClass('show-log-panel');
+    });
+    
+    
+    $('.login-reg-panel input[type="radio"]').on('change', function() {
+        if($('#log-login-show').is(':checked')) {
+            $('.register-info-box').fadeOut(); 
+            $('.login-info-box').fadeIn();
+            
+            $('.white-panel').addClass('right-log');
+            $('.register-show').addClass('show-log-panel');
+            $('.login-show').removeClass('show-log-panel');
+            
+        }
+        else if($('#log-reg-show').is(':checked')) {
+            $('.register-info-box').fadeIn();
+            $('.login-info-box').fadeOut();
+            
+            $('.white-panel').removeClass('right-log');
+            
+            $('.login-show').addClass('show-log-panel');
+            $('.register-show').removeClass('show-log-panel');
+        }
+    });
+
     </script>
+
+
 </body>
 
 </html>
