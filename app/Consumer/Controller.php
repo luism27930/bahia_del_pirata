@@ -31,7 +31,9 @@ class Controller{
         return $response;
 
     }
-    
+    /**
+     * Actualizar el link del cvideo
+     */
     public function updateLink($video, $symbolic_link)
     {
         $conn = new Connection();
