@@ -55,8 +55,6 @@ class DownloadController extends Controller
         $video_path = 'videos/' . $symbolicLink;
         if (Storage::exists($video_path)) {
             return response()->download(storage_path() . '/app/' . $video_path);
-        } else {
-            dd("El archivo no existe");
         }
     }
     /**
