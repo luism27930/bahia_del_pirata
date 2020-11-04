@@ -8,8 +8,8 @@ class SymbolicLink {
      */
     public function create($user_directory, $original_path)
     {  
-        $command = ('ln '. '../../../app/Consumer/'.escapeshellarg($original_path).' '. escapeshellarg($user_directory));
-        #ln  ../../../app/Consumer/Downloads/5.avi ../../storage/app/videos/hatacuandonono.avi
+        $command = ('ln ' .escapeshellarg($original_path).' '. escapeshellarg($user_directory));
+
         $descriptorspec = array(
             0 => array("pipe", "r"), // stdin
             1 => array("pipe", "w"), // stdout
