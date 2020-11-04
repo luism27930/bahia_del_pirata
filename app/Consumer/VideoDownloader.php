@@ -20,6 +20,7 @@ class VideoDownloader
         #Poner en video en proceso
         $controller->inProccess($video);
         #Validar si existe el link con el formato
+        #Validar si existe el link con el formato
         $response = $controller->findLinkAndFormat($video);
 
         if ($response) {
