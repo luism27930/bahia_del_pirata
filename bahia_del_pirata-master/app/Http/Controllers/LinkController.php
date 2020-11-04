@@ -76,7 +76,7 @@ class LinkController extends Controller
         $link->success = 'null';
         $link->save();
         try {
-            $connection = new AMQPStreamConnection('shrimp-01.rmq.cloudamqp.com', 5672, 'gafnmalf', 'dfidH6NSrF-w5gZkZ25zXNsVsViFLI7P');
+            $connection = new AMQPStreamConnection('shrimp-01.rmq.cloudamqp.com', 5672, 'gafnmalf', 'dfidH6NSrF-w5gZkZ25zXNsVsViFLI7P','gafnmalf');
             $channel = $connection->channel();
             $channel->queue_declare('default', true, false, false, false);
             $msg = new AMQPMessage($link);
@@ -84,7 +84,9 @@ class LinkController extends Controller
             $channel->close();
             $connection->close();
         } catch (\Throwable $th) {
+
             session(['success' => false,'message' => 'Algo ha salido mal, vuelve más tarde e intenta de nuevo!']);
+            $link->delete();
         }
         $directory = 'videos/';
         if (!Storage::exists($directory)) {
