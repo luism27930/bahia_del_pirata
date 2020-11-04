@@ -21,7 +21,7 @@
         </div>
         <div class="row">
             @if (!empty($links))
-                {{-- Es como decir require --}}
+                
                 @each('downloads.card', $links, 'link')
             @endif
         </div>
