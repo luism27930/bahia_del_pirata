@@ -25,14 +25,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
 
     <style>
-                html, body {
-                background-image:url("images/background.jpg");
+                   html, body {
                 color: #ffffff;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 600;
                 height: 100vh;
                 margin: 0;
-        
+            }
+            body{
+            background-image:url("images/background.jpg");
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+                overflow: scroll;
             }
 
 link{
