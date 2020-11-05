@@ -73,7 +73,7 @@
 		<div class="card-footer extremeColor text-center">
 			<a href="{{ route('download.show',$link->symbolic_link) }}" class="btn btn-success"><span class="glyphicon glyphicon-download"></span>Descargar</a> ||
 			<a href="#del{{$link->id}}" data-toggle="modal" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span>Eliminar</a> ||
-			<a href="#edit{{$link->id}}" data-toggle="modal" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span>Editar</a> 
+			<a href="#edit{{$link->id}}" data-toggle="modal" class="btn btn-dark"><span class="glyphicon glyphicon-edit"></span>Editar</a> 
 			@include('downloads.modals')
 		</div>
 	</div>
